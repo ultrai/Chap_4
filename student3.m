@@ -33,7 +33,7 @@ Acc = [Acc;mean(pred1==Label_Test)];
 c2 = fitcsvm(Feat_Train,Label_Train,'KernelFunction','rbf');
 [pred2,scores2] = predict(c2,Feat_Test);
 Acc = [Acc;mean(pred2==Label_Test)];
-mi = FFCM_display(Feat_Train,Label_Train);
+mi = FFCM_display(Feat_Train,Label_Train); %nc = 4; m=1.2;
 idx2=[];
 for temp=1:max(Label_Train)
         idx2 = [idx2 min(pdist2(Feat_Test,mi{temp}),[],2)];
