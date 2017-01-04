@@ -194,8 +194,13 @@ for cv =1:15
     Feat_Test= Feat_test(Idx_test>0,:);
     Label_Train = Label_train(Idx_train>0);
     %Label_Test= Label_test(abs(Sub_idx_test-cv+1)<=n);
-    Mdl = fitcecoc(Feat_Train,Label_Train);
-    Est = predict(Mdl,Feat_Test);
+%     Mdl = fitcecoc(Feat_Train,Label_Train);
+%     Est = predict(Mdl,Feat_Test);
+      Mdl = TreeBagger(7,Feat_Train,Label_Train);
+      Est_temp = predict(Mdl,Feat_Test);   Est = str2num(cell2mat(Est_temp));
+%     Mdl = trainSoftmaxLayer(Feat_Train',full(ind2vec(Label_Train')));
+%     [~,Est] = max(Mdl(Feat_Test'));    Est = Est';
+
     for sub_test = (15-n+1):15
 %     Feat_Test= Feat_test(Sub_idx_test==sub_test,:);
         Label_Test = Label_test(Idx_test==sub_test);
@@ -206,7 +211,15 @@ for cv =1:15
         Decision2 =[Decision2; [est_1 est_2 est_3]];
     end
 end
-% 0.9429    0.8857    0.9143
+mean(Decision2)
+% svm   0.9429    0.8857    0.9143
+% tree1 0.9714    0.7429    0.9048
+% tree2 1.0000    0.7810    0.4000
+% tree3 1.0000    0.8286    0.8952
+% tree4 1.0000    0.8476    0.8000
+% tree5 1.0000    0.8571    0.8857
+% tree7 1.0000    0.8286    0.8857
+% softmax 0.9524    0.8857    0.9143
 %%
 n = 8
 Feat_Train = Feat_train(Sub_idx_train<=n,:);
