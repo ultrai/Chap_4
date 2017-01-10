@@ -194,10 +194,14 @@ for cv =1:15
     Feat_Test= Feat_test(Idx_test>0,:);
     Label_Train = Label_train(Idx_train>0);
     %Label_Test= Label_test(abs(Sub_idx_test-cv+1)<=n);
-%     Mdl = fitcecoc(Feat_Train,Label_Train);
-%     Est = predict(Mdl,Feat_Test);
-      Mdl = TreeBagger(7,Feat_Train,Label_Train);
-      Est_temp = predict(Mdl,Feat_Test);   Est = str2num(cell2mat(Est_temp));
+    t1 = templateSVM();
+    t2 = templateSVM('KernelFunction','gaussian');
+    t3 = templateSVM('KernelFunction','rbf');
+
+    Mdl = fitcecoc(Feat_Train,Label_Train,t1);
+    Est = predict(Mdl,Feat_Test);
+%       Mdl = TreeBagger(7,Feat_Train,Label_Train);
+%       Est_temp = predict(Mdl,Feat_Test);   Est = str2num(cell2mat(Est_temp));
 %     Mdl = trainSoftmaxLayer(Feat_Train',full(ind2vec(Label_Train')));
 %     [~,Est] = max(Mdl(Feat_Test'));    Est = Est';
 
