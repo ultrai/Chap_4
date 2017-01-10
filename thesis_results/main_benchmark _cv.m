@@ -198,7 +198,7 @@ for cv =1:15
     t2 = templateSVM('KernelFunction','gaussian');
     t3 = templateSVM('KernelFunction','rbf');
 
-    Mdl = fitcecoc(Feat_Train,Label_Train,t1);
+    Mdl = fitcecoc(Feat_Train,Label_Train,'Learners',t1);
     Est = predict(Mdl,Feat_Test);
 %       Mdl = TreeBagger(7,Feat_Train,Label_Train);
 %       Est_temp = predict(Mdl,Feat_Test);   Est = str2num(cell2mat(Est_temp));
