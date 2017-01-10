@@ -198,7 +198,7 @@ for cv =1:15
     t2 = templateSVM('KernelFunction','gaussian');
     t3 = templateSVM('KernelFunction','rbf');
 
-    Mdl = fitcecoc(Feat_Train,Label_Train,'Learners',t1);
+    Mdl = fitcecoc(Feat_Train,Label_Train,'Learners',t3);
     Est = predict(Mdl,Feat_Test);
 %       Mdl = TreeBagger(7,Feat_Train,Label_Train);
 %       Est_temp = predict(Mdl,Feat_Test);   Est = str2num(cell2mat(Est_temp));
@@ -217,6 +217,9 @@ for cv =1:15
 end
 mean(Decision2)
 % svm   0.9429    0.8857    0.9143
+% svm Gaussian  1 0 0
+% svm rbf  1 0 0
+
 % tree1 0.9714    0.7429    0.9048
 % tree2 1.0000    0.7810    0.4000
 % tree3 1.0000    0.8286    0.8952
