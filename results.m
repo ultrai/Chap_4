@@ -4,7 +4,7 @@ Class=[2,10,17,24];
 load('list.mat')
 data = {};
 
-%%
+%%%
 load(list{2});
 data{1} = [X Y];
 
