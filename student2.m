@@ -1,7 +1,7 @@
 %function student()
 clear
 close all
-cd('/home/mict/Desktop/for mam')
+%cd('/home/mict/Desktop/for mam')
 run('results.m')
 load('Matlab_data.mat');
 exp =4;%1-4
