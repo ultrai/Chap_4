@@ -50,7 +50,7 @@ Acc = [Acc;mean(pred1==Label_Test)];
 
 
 
-mi = FFCM_display(Feat_Train,Label_Train);
+mi = FFCM_display(Feat_Train,Label_Train);%nc=9
 X = [];
 Y = [];
 for iter = 1:numel(mi)
