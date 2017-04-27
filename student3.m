@@ -2,7 +2,7 @@
 clear
 close all
 %cd('/home/mict/for mam')
-addpath(genpath('y_fcmc_ver.1.0'))
+%addpath(genpath('y_fcmc_ver.1.0'))
 data = twospirals();
 scatter(data(:,1), data(:,2), 12, data(:,3));
 data(:,3) = data(:,3)+1;
